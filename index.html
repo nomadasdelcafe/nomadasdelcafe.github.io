@@ -401,7 +401,7 @@ footer p{opacity:.75;font-size:.9rem;margin-top:6px}
     </div>
     <div class="filtros" id="filtros"></div>
     <div class="productos" id="productos"></div>
-    <p class="nota-precios">Precios en pesos colombianos (COP), según nuestra carta. Donde dice "Consultar", te confirmamos el valor por WhatsApp.</p>
+    <p class="nota-precios">Elige tus platos y envía tu pedido por WhatsApp: te confirmamos disponibilidad y valor al instante.</p>
   </div>
 </section>
 
@@ -596,7 +596,7 @@ footer p{opacity:.75;font-size:.9rem;margin-top:6px}
     <select id="tipo"><option>Para comer en el restaurante</option><option>Para recoger</option><option>Domicilio en Filandia</option></select>
     <label for="nota">Nota (opcional)</label>
     <textarea id="nota" rows="2" placeholder="Ej: sin cebolla, mesa para 4…"></textarea>
-    <div class="total"><span>Total aprox.</span><span id="total">$0</span></div>
+    <div class="total" style="display:none"><span>Total aprox.</span><span id="total">$0</span></div>
     <a class="btn btn-wa off" id="enviar" target="_blank" rel="noopener">Enviar pedido por WhatsApp</a>
   </div>
 </aside>
@@ -708,7 +708,7 @@ function pintarProductos(){
     const ctrl = q ? `<div class="cant"><button onclick="cambiar(${p.id},-1)">−</button><span>${q}</span><button onclick="cambiar(${p.id},1)">+</button></div>`
                    : `<button class="agregar" onclick="cambiar(${p.id},1)">+ Agregar</button>`;
     return `<div class="prod"><div class="foto">${foto}${p.tag?`<span class="tag">${p.tag}</span>`:""}</div>
-      <div class="info"><h3>${p.n}</h3><p>${p.d}</p><div class="pie"><span class="precio">${p.p?cop(p.p):'<small style="font-size:.8rem">Consultar</small>'}</span>${ctrl}</div></div></div>`;
+      <div class="info"><h3>${p.n}</h3><p>${p.d}</p><div class="pie"><span class="precio"></span>${ctrl}</div></div></div>`;
   }).join("");
 }
 
@@ -726,7 +726,7 @@ function pintarCarrito(){
   let total = 0;
   const html = ids.map(i => {
     const p = productos.find(x=>x.id==i); const sub = p.p*carrito[i]; total += sub;
-    return `<div class="item"><div class="n"><b>${p.n}</b><small>${p.p?cop(p.p)+" c/u · "+cop(sub):"Precio por confirmar"}</small></div>
+    return `<div class="item"><div class="n"><b>${p.n}</b><small>${p.cat.replace(/^[^A-Za-zÁÉÍÓÚáéíóúÑñ]+/,"")}</small></div>
       <div class="cant"><button onclick="cambiar(${p.id},-1)">−</button><span>${carrito[i]}</span><button onclick="cambiar(${p.id},1)">+</button></div></div>`;
   }).join("");
   document.getElementById("lista").innerHTML = html || `<div class="vacio">🧺<br>Tu pedido está vacío.<br>Agrega platos desde el menú.</div>`;
@@ -743,12 +743,12 @@ function actualizarEnlace(total){
   const tipo = document.getElementById("tipo").value;
   const nota = document.getElementById("nota").value.trim();
   let t = `Hola Nómadas del Café 👋\nQuiero hacer este pedido:\n\n`;
-  ids.forEach(i => { const p = productos.find(x=>x.id==i); t += `• ${carrito[i]} x ${p.n} — ${p.p?cop(p.p*carrito[i]):"precio por confirmar"}\n`; });
-  t += `\nTotal aprox.: ${cop(total ?? ids.reduce((s,i)=>s+productos.find(x=>x.id==i).p*carrito[i],0))}\n`;
+  ids.forEach(i => { const p = productos.find(x=>x.id==i); t += `• ${carrito[i]} x ${p.n}\n`; });
+  t += `\n`;
   t += `Modalidad: ${tipo}\n`;
   if (nombre) t += `Nombre: ${nombre}\n`;
   if (nota) t += `Nota: ${nota}\n`;
-  t += `\n¿Me confirman disponibilidad? Gracias.`;
+  t += `¿Me confirman disponibilidad y el valor total? Gracias.`;
   btn.href = wa(t);
 }
 ["nombre","tipo","nota"].forEach(id => document.getElementById(id).addEventListener("input", () => actualizarEnlace()));
