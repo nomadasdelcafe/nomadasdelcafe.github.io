@@ -78,6 +78,12 @@ header.nav{position:sticky;top:0;z-index:50;background:rgba(59,36,24,.96);backdr
 .video .mural{width:100%;max-width:460px;border-radius:18px;margin-top:6px;box-shadow:var(--sombra)}
 @media(max-width:760px){.video .grid{grid-template-columns:1fr;justify-items:center;text-align:center}.reels .marco{flex-basis:170px;border-width:5px}.reels .marco.destacado{flex-basis:200px}.video .mural{margin:6px auto 0}}
 
+/* MAPA */
+.mapa{position:relative;margin-top:26px;border-radius:22px;overflow:hidden;box-shadow:var(--sombra);background:#e8dcc6;min-height:360px}
+.mapa iframe{width:100%;height:400px;border:0;display:block}
+.mapa-btn{position:absolute;left:50%;bottom:18px;transform:translateX(-50%);white-space:nowrap}
+.mapa-btn:hover{transform:translateX(-50%) translateY(-2px)}
+
 /* CENA */
 .cena{background:linear-gradient(135deg,#1e120b,#3b2418);color:var(--crema)}
 .cena .grid{display:grid;grid-template-columns:340px 1fr;gap:50px;align-items:center}
@@ -282,7 +288,7 @@ footer p{opacity:.75;font-size:.9rem;margin-top:6px}
     </div>
     <div class="premio-hero">🏆 Restaurant Guru 2026 · <b>El mejor café en Filandia</b></div>
     <div class="datos">
-      <span>📍 Calle 6 # 7-30, Filandia</span>
+      <span>📍 <a href="https://www.google.com/maps/search/?api=1&query=Restaurante%20N%C3%B3madas%20del%20caf%C3%A9%20Filandia&query_place_id=ChIJc5QhyiWJOI4RT6lwettsmSE" target="_blank" rel="noopener" style="color:inherit">Cra. 8 # 6-52, Filandia</a></span>
       <span>🕛 12:00 m. – 11:00 p. m.</span>
       <span>📱 314 221 1270</span>
     </div>
@@ -511,9 +517,13 @@ footer p{opacity:.75;font-size:.9rem;margin-top:6px}
   <div class="wrap">
     <div class="titulo"><span class="pre">Te esperamos</span><h2>Visítanos en Filandia</h2></div>
     <div class="grid">
-      <div class="card"><div class="ic">📍</div><h3>Dirección</h3><p>Calle 6 # 7-30<br>A dos cuadras del parque principal<br>Filandia, Quindío</p></div>
+      <div class="card"><div class="ic">📍</div><h3>Dirección</h3><p>Cra. 8 # 6-52<br>Calle del Tiempo Detenido<br>Filandia, Quindío</p><br><a class="btn btn-claro" style="border:2px solid var(--cafe)" href="https://www.google.com/maps/search/?api=1&query=Restaurante%20N%C3%B3madas%20del%20caf%C3%A9%20Filandia&query_place_id=ChIJc5QhyiWJOI4RT6lwettsmSE" target="_blank" rel="noopener">🗺️ Cómo llegar</a></div>
       <div class="card"><div class="ic">🕛</div><h3>Horario</h3><p>Todos los días<br>12:00 m. – 11:00 p. m.</p></div>
       <div class="card"><div class="ic">💬</div><h3>Pedidos y reservas</h3><p>WhatsApp 314 221 1270</p><br><a class="btn btn-wa" target="_blank" rel="noopener" data-wa="Hola Nómadas del Café 👋 Quiero hacer una reserva.">Reservar</a></div>
+    </div>
+    <div class="mapa">
+      <iframe src="https://maps.google.com/maps?q=Restaurante%20N%C3%B3madas%20del%20caf%C3%A9%2C%20Cra.%208%20%236-52%2C%20Filandia%2C%20Quind%C3%ADo&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Nómadas del Café en Filandia"></iframe>
+      <a class="btn btn-wa mapa-btn" href="https://www.google.com/maps/search/?api=1&query=Restaurante%20N%C3%B3madas%20del%20caf%C3%A9%20Filandia&query_place_id=ChIJc5QhyiWJOI4RT6lwettsmSE" target="_blank" rel="noopener">📍 Abrir en Google Maps</a>
     </div>
   </div>
 </section>
@@ -521,7 +531,7 @@ footer p{opacity:.75;font-size:.9rem;margin-top:6px}
 <footer>
   <b>Nómadas del Café</b>
   <p>Cocina típica · Café de origen · Cócteles</p>
-  <p>Calle 6 # 7-30, Filandia, Quindío · WhatsApp 314 221 1270</p>
+  <p>Cra. 8 # 6-52, Calle del Tiempo Detenido, Filandia, Quindío · WhatsApp 314 221 1270</p>
   <p>© 2026 Nómadas del Café</p>
 </footer>
 <div class="franja" style="position:fixed;bottom:0;left:0;right:0;z-index:40"></div>
@@ -695,7 +705,7 @@ function toast(m){ const t=document.getElementById("toast"); t.textContent=m; t.
 /* ===== CHATBOT DE RESPUESTA RÁPIDA ===== */
 const respuestas = {
   "🕛 Horario": "Abrimos todos los días de 12:00 m. a 11:00 p. m. ¡Te esperamos! ☕",
-  "📍 Ubicación": "Estamos en la Calle 6 # 7-30, a dos cuadras del parque principal de Filandia, Quindío. Busca la casa de balcones de colores 🏡",
+  "📍 Ubicación": "Estamos en la Cra. 8 # 6-52, en la Calle del Tiempo Detenido de Filandia, Quindío 🏡 Toca el botón para abrir Google Maps.",
   "🍽️ Ver menú": "Tenemos platos típicos (bandeja paisa, frijolada, carne desmechada), especiales de la casa, café de origen, jugos naturales y cócteles. Te llevo al menú 👇",
   "🍹 Promo 2x1": "¡Sí! Todos los días tenemos 2x1 en cócteles, de 12:00 m. a 11:00 p. m. 🍹🍹",
   "🛵 Domicilios": "Hacemos pedidos para recoger y domicilios dentro de Filandia. Arma tu pedido en el menú y envíalo por WhatsApp, o escríbenos directamente.",
@@ -706,11 +716,13 @@ const respuestas = {
   "💳 Pagos": "Recibimos efectivo y transferencias. Escríbenos por WhatsApp para confirmar otros medios de pago.",
   "💬 Hablar con alguien": "¡Claro! Un asesor te atiende por WhatsApp ahora mismo."
 };
+const linkMaps = "https://www.google.com/maps/search/?api=1&query=Restaurante%20N%C3%B3madas%20del%20caf%C3%A9%20Filandia&query_place_id=ChIJc5QhyiWJOI4RT6lwettsmSE";
 const conWa = {"🎂 Cumpleaños":"Hola 👋 Quiero celebrar un cumpleaños en Nómadas del Café.","🥂 Cena fin de año":"Hola 👋 Quiero reservar para la Cena de fin de año en 4 tiempos.","📅 Reservas":"Hola 👋 Quiero reservar una mesa en Nómadas del Café.","🛵 Domicilios":"Hola 👋 Quiero pedir un domicilio.","💬 Hablar con alguien":"Hola Nómadas del Café 👋 Tengo una pregunta.","💳 Pagos":"Hola 👋 ¿Qué medios de pago reciben?"};
 const msgs = document.getElementById("msgs");
 function decir(txt, quien="b", link){
   const d = document.createElement("div"); d.className = "m " + quien; d.textContent = txt;
   if (link){ const a=document.createElement("a"); a.className="irwa"; a.target="_blank"; a.rel="noopener"; a.href=wa(link); a.textContent="Abrir WhatsApp"; d.appendChild(document.createElement("br")); d.appendChild(a); }
+  if (quien==="b" && txt===respuestas["📍 Ubicación"]){ const a=document.createElement("a"); a.className="irwa"; a.style.background="#2d5fa8"; a.target="_blank"; a.rel="noopener"; a.href=linkMaps; a.textContent="📍 Abrir Google Maps"; d.appendChild(document.createElement("br")); d.appendChild(a); }
   msgs.appendChild(d); msgs.scrollTop = msgs.scrollHeight;
 }
 function responder(k){
