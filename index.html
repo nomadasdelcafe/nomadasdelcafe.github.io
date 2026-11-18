@@ -522,7 +522,7 @@ footer p{opacity:.75;font-size:.9rem;margin-top:6px}
       <div class="card"><div class="ic">💬</div><h3>Pedidos y reservas</h3><p>WhatsApp 314 221 1270</p><br><a class="btn btn-wa" target="_blank" rel="noopener" data-wa="Hola Nómadas del Café 👋 Quiero hacer una reserva.">Reservar</a></div>
     </div>
     <div class="mapa">
-      <iframe src="https://maps.google.com/maps?q=Restaurante%20N%C3%B3madas%20del%20caf%C3%A9%2C%20Cra.%208%20%236-52%2C%20Filandia%2C%20Quind%C3%ADo&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Nómadas del Café en Filandia"></iframe>
+      <iframe src="https://maps.google.com/maps?q=4.6764889,-75.6590839&hl=es&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa de Nómadas del Café en Filandia"></iframe>
       <a class="btn btn-wa mapa-btn" href="https://www.google.com/maps/search/?api=1&query=Restaurante%20N%C3%B3madas%20del%20caf%C3%A9%20Filandia&query_place_id=ChIJc5QhyiWJOI4RT6lwettsmSE" target="_blank" rel="noopener">📍 Abrir en Google Maps</a>
     </div>
   </div>
@@ -574,7 +574,7 @@ footer p{opacity:.75;font-size:.9rem;margin-top:6px}
 
 <script>
 const WHATSAPP = "573142211270";
-const wa = t => `https://wa.me/${WHATSAPP}?text=${encodeURIComponent(t)}`;
+const wa = t => `https://api.whatsapp.com/send?phone=${WHATSAPP}&text=${encodeURIComponent(t)}`;
 
 /* ===== PRODUCTOS (edita nombres y precios aquí) ===== */
 const productos = [
