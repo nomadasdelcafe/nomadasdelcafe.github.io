@@ -6,7 +6,8 @@ const WHATSAPP = "573142211270";
 const TEL = "+573142211270";
 const TEL_TXT = "314 221 1270";
 const wa = t => `https://api.whatsapp.com/send?phone=${WHATSAPP}&text=${encodeURIComponent(t)}`;
-const I = n => `img/f${String(n).padStart(3, "0")}.jpg`;
+const R = window.RUTA || "";
+const I = n => `${R}img/f${String(n).padStart(3, "0")}.jpg`;
 
 /* ===== SEDES ===== */
 const SEDES = [
@@ -170,7 +171,7 @@ function renderReels(){
   const el = $("reels"); if (!el) return;
   el.innerHTML = REELS.map(([v,p,t,dest]) => `
     <div class="marco${dest?" destacado":""}">
-      <video src="video/${v}" poster="${I(p)}" autoplay muted loop playsinline preload="metadata"></video>
+      <video src="${R}video/${v}" poster="${I(p)}" autoplay muted loop playsinline preload="metadata"></video>
       <span class="etq">${t}</span>
       <button class="sonido" onclick="toggleSonido(this)">🔇 Sonido</button>
     </div>`).join("");
@@ -183,7 +184,7 @@ function toggleSonido(b){
 
 /* ===== MENÚ + PEDIDO ===== */
 const carrito = {};
-let filtroActual = "Todos";
+let filtroActual = window.FILTRO_INICIAL || "Todos";
 function filtrar(c){
   filtroActual = c;
   document.querySelectorAll(".filtro").forEach(b => b.classList.toggle("on", b.dataset.c === c));
@@ -339,5 +340,5 @@ document.addEventListener("DOMContentLoaded", () => {
     setTimeout(()=> hit ? decir(respuestas[hit[1]], "b", conWa[hit[1]], hit[1]==="📍 Sedes")
       : decir("¡Buena pregunta! Te respondemos personalmente por WhatsApp 😊", "b", "Hola Nómadas del Café 👋 " + v), 450);
   };
-  filtrar("Todos"); pintarCarrito();
+  filtrar(window.FILTRO_INICIAL || "Todos"); pintarCarrito();
 });
