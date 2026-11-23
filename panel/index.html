@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Panel · Nómadas del Café</title>
+<meta name="robots" content="noindex">
+<meta name="theme-color" content="#17100b">
+<link rel="icon" href="https://nomadasdelcafe.github.io/opciones/img/logo-180.png">
+<link rel="apple-touch-icon" href="https://nomadasdelcafe.github.io/opciones/img/logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600;700&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#17100b;--card:#231810;--card2:#2c1f15;--ink:#f3e7d3;--ink2:#cdb89a;--oro:#c9a24a;--verde:#3f9d5a;--rojo:#c0503a;--azul:#4a8bc9;--linea:#3a2a1c}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'Manrope',system-ui,sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;-webkit-tap-highlight-color:transparent}
+h1,h2,.serif{font-family:'Cormorant Garamond',Georgia,serif}
+button,input,select{font-family:inherit;font-size:1rem}
+.wrap{max-width:900px;margin:0 auto;padding:0 16px}
+/* Login */
+.login{min-height:100vh;display:grid;place-items:center;padding:24px}
+.login .caja{width:100%;max-width:360px;background:var(--card);border:1px solid var(--linea);border-radius:14px;padding:30px 24px;text-align:center}
+.login img{width:96px;height:96px;border-radius:50%;margin-bottom:12px}
+.login h1{font-size:1.9rem;margin-bottom:4px}
+.login p{color:var(--ink2);font-size:.9rem;margin-bottom:20px}
+.login input{width:100%;padding:14px;border-radius:10px;border:1px solid var(--linea);background:#120c08;color:var(--ink);margin-bottom:12px;text-align:center;letter-spacing:2px}
+.btn{border:0;border-radius:10px;padding:12px 16px;font-weight:800;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;gap:6px;text-decoration:none}
+.btn-oro{background:var(--oro);color:#17100b;width:100%}
+.err{color:#ff9d8a;font-size:.88rem;min-height:1.2em;margin-top:6px}
+/* App */
+header{position:sticky;top:0;z-index:20;background:rgba(23,16,11,.96);backdrop-filter:blur(6px);border-bottom:1px solid var(--linea)}
+header .wrap{display:flex;align-items:center;gap:10px;height:62px}
+header img{width:38px;height:38px;border-radius:50%}
+header .t{flex:1;line-height:1.1}
+header .t b{font-family:'Cormorant Garamond';font-size:1.25rem}
+header .t small{display:block;color:var(--oro);font-size:.68rem;letter-spacing:2px;text-transform:uppercase;font-weight:800}
+.ico{background:var(--card);border:1px solid var(--linea);color:var(--ink);width:40px;height:40px;border-radius:10px;cursor:pointer;font-size:1.05rem}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:14px 0}
+.stat{background:var(--card);border:1px solid var(--linea);border-radius:12px;padding:12px 8px;text-align:center}
+.stat b{display:block;font-family:'Cormorant Garamond';font-size:1.9rem;color:var(--oro);line-height:1}
+.stat span{font-size:.7rem;color:var(--ink2);text-transform:uppercase;letter-spacing:1px;font-weight:700}
+.tabs{display:flex;gap:6px;overflow-x:auto;padding-bottom:4px;scrollbar-width:none}
+.tabs button{flex:0 0 auto;background:var(--card);border:1px solid var(--linea);color:var(--ink2);border-radius:999px;padding:9px 15px;font-weight:700;font-size:.88rem;cursor:pointer}
+.tabs button.on{background:var(--oro);color:#17100b;border-color:var(--oro)}
+.tabs .n{background:var(--rojo);color:#fff;border-radius:999px;padding:0 6px;font-size:.72rem;margin-left:4px}
+.filtro{display:flex;gap:8px;margin:12px 0;align-items:center}
+.filtro select{flex:1;background:var(--card);color:var(--ink);border:1px solid var(--linea);border-radius:10px;padding:10px}
+.dia{font-family:'Cormorant Garamond';font-size:1.35rem;color:var(--oro);margin:18px 0 8px}
+.item{background:var(--card);border:1px solid var(--linea);border-left:4px solid var(--oro);border-radius:12px;padding:14px;margin-bottom:10px}
+.item.confirmada,.item.entregado{border-left-color:var(--verde)}
+.item.cancelada{border-left-color:var(--rojo);opacity:.6}
+.item.llego{border-left-color:var(--azul)}
+.item.preparando{border-left-color:var(--azul)}
+.fila{display:flex;align-items:flex-start;gap:12px}
+.hora{font-family:'Cormorant Garamond';font-size:1.7rem;font-weight:700;line-height:1;min-width:62px;color:var(--ink)}
+.hora small{display:block;font-family:'Manrope';font-size:.68rem;color:var(--ink2);font-weight:700;margin-top:4px}
+.info{flex:1;min-width:0}
+.info b{font-size:1.05rem}
+.info .m{color:var(--ink2);font-size:.86rem;margin-top:3px;line-height:1.45}
+.info .nota{background:var(--card2);border-radius:8px;padding:8px 10px;margin-top:8px;font-size:.86rem;color:var(--ink)}
+.badge{display:inline-block;font-size:.66rem;font-weight:800;letter-spacing:1px;text-transform:uppercase;padding:4px 8px;border-radius:999px;background:#3b2c1c;color:var(--oro);white-space:nowrap}
+.badge.confirmada,.badge.entregado{background:#1f3a26;color:#8fe0a5}.badge.cancelada{background:#3d1d17;color:#ff9d8a}.badge.llego,.badge.preparando{background:#1b2d40;color:#9cc8f0}
+.acc{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+.acc .btn{padding:9px 11px;font-size:.82rem;border-radius:9px;background:var(--card2);color:var(--ink);border:1px solid var(--linea)}
+.acc .ok{background:var(--verde);color:#fff;border-color:var(--verde)}
+.acc .wa{background:#25d366;color:#0b2a16;border-color:#25d366}
+.vacio{text-align:center;color:var(--ink2);padding:50px 10px}
+.vacio div{font-size:2.6rem;margin-bottom:8px}
+.ajustes .bloque{background:var(--card);border:1px solid var(--linea);border-radius:12px;padding:16px;margin-top:14px}
+.ajustes label{display:block;font-weight:700;margin-bottom:6px}
+.ajustes p{color:var(--ink2);font-size:.86rem;margin-bottom:10px;line-height:1.5}
+.ajustes input{width:100%;padding:12px;border-radius:10px;border:1px solid var(--linea);background:#120c08;color:var(--ink);margin-bottom:10px}
+.toast{position:fixed;left:50%;bottom:22px;transform:translateX(-50%) translateY(120px);background:var(--oro);color:#17100b;font-weight:800;padding:12px 20px;border-radius:999px;transition:.3s;z-index:50;box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.toast.on{transform:translateX(-50%) translateY(0)}
+.pie{color:var(--ink2);font-size:.75rem;text-align:center;padding:30px 0 40px}
+.items{margin-top:6px;font-size:.9rem;line-height:1.5}
+@media(max-width:520px){.stat b{font-size:1.55rem}.stat span{font-size:.6rem}}
+</style>
+</head>
+<body>
+<div id="app"></div>
+<div class="toast" id="toast"></div>
+<script>
+const API = "https://nomadasdelcafe.vercel.app/api";
+const SEDES = ["Todas las sedes"];
+let CLAVE = ""; try { CLAVE = localStorage.getItem("nomadas_clave") || ""; } catch(e){}
+let datos = { reservas: [], pedidos: [], config: {} }, tab = "hoy", sedeFiltro = "Todas las sedes", vistos = null, timer;
+const $ = s => document.querySelector(s);
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
+const hoyISO = () => { const d = new Date(); return new Date(d.getTime() - d.getTimezoneOffset()*60000).toISOString().slice(0,10); };
+const fechaBonita = f => new Date(f + "T12:00:00").toLocaleDateString("es-CO", { weekday:"long", day:"numeric", month:"long" });
+const hora12 = h => { const [H,M] = h.split(":").map(Number); return `${((H+11)%12)+1}:${String(M).padStart(2,"0")}`; };
+const ampm = h => parseInt(h) < 12 ? "a. m." : "p. m.";
+const hace = iso => { const m = Math.round((Date.now() - new Date(iso)) / 60000); return m < 1 ? "ahora" : m < 60 ? `hace ${m} min` : m < 1440 ? `hace ${Math.round(m/60)} h` : new Date(iso).toLocaleDateString("es-CO",{day:"numeric",month:"short"}); };
+const waNum = n => { const d = String(n).replace(/\D/g,""); return d.length === 10 ? "57" + d : d; };
+function toast(t){ const e=$("#toast"); e.textContent=t; e.classList.add("on"); clearTimeout(e._t); e._t=setTimeout(()=>e.classList.remove("on"),2200); }
+function beep(){ try{ const a=new (window.AudioContext||window.webkitAudioContext)(); [0,.18].forEach(d=>{const o=a.createOscillator(),g=a.createGain();o.frequency.value=880;o.connect(g);g.connect(a.destination);g.gain.setValueAtTime(.15,a.currentTime+d);g.gain.exponentialRampToValueAtTime(.001,a.currentTime+d+.15);o.start(a.currentTime+d);o.stop(a.currentTime+d+.16);}); }catch(e){} }
+
+async function api(path, opts = {}) {
+  const r = await fetch(API + path, { ...opts, headers: { "Content-Type": "application/json", "x-clave": CLAVE, ...(opts.headers||{}) } });
+  const j = await r.json().catch(() => ({ ok:false, error:"Sin respuesta" }));
+  if (r.status === 401) throw Object.assign(new Error(j.error || "Clave incorrecta"), { auth: true });
+  if (!j.ok) throw new Error(j.error || "Error");
+  return j;
+}
+
+function pantallaLogin(msg = "") {
+  clearInterval(timer);
+  $("#app").innerHTML = `<div class="login"><div class="caja">
+    <img src="https://nomadasdelcafe.github.io/opciones/img/logo-180.png" alt="">
+    <h1>Nómadas del Café</h1><p>Panel de reservas y pedidos</p>
+    <form id="fl"><input id="clave" type="password" placeholder="Clave del panel" autocomplete="current-password" required>
+    <button class="btn btn-oro">Entrar</button><div class="err">${esc(msg)}</div></form></div></div>`;
+  $("#fl").onsubmit = async e => {
+    e.preventDefault(); CLAVE = $("#clave").value.trim();
+    try { await cargar(); try{ localStorage.setItem("nomadas_clave", CLAVE); }catch(e){} pantallaApp(); }
+    catch(err){ pantallaLogin(err.auth ? "Clave incorrecta" : "No se pudo conectar. Revisa tu internet."); }
+  };
+}
+
+async function cargar(silencioso) {
+  const [r, p, c] = await Promise.all([api("/reservas"), api("/pedidos"), api("/config")]);
+  const ids = new Set([...r.reservas, ...p.pedidos].map(x => x.id));
+  if (vistos && silencioso) {
+    const nuevos = [...ids].filter(i => !vistos.has(i)).length;
+    if (nuevos) { beep(); toast(`🔔 ${nuevos} nuevo${nuevos>1?"s":""}: revisa el panel`); }
+  }
+  vistos = ids;
+  datos = { reservas: r.reservas, pedidos: p.pedidos, config: c.config };
+  [...r.reservas, ...p.pedidos].forEach(x => { if (x.sede && !SEDES.includes(x.sede)) SEDES.push(x.sede); });
+}
+
+function pantallaApp() {
+  $("#app").innerHTML = `
+  <header><div class="wrap">
+    <img src="https://nomadasdelcafe.github.io/opciones/img/logo-180.png" alt="">
+    <div class="t"><small>Panel</small><b>Nómadas del Café</b></div>
+    <button class="ico" title="Actualizar" onclick="refrescar()">⟳</button>
+    <button class="ico" title="Salir" onclick="salir()">⎋</button>
+  </div></header>
+  <main class="wrap">
+    <div class="stats" id="stats"></div>
+    <div class="tabs" id="tabs"></div>
+    <div id="contenido"></div>
+    <div class="pie">Se actualiza solo cada 30 segundos · Sistema hecho a la medida para Nómadas del Café</div>
+  </main>`;
+  pintar();
+  clearInterval(timer);
+  timer = setInterval(() => cargar(true).then(pintar).catch(()=>{}), 30000);
+}
+async function refrescar(){ try { await cargar(true); pintar(); toast("Actualizado"); } catch(e){ toast("Sin conexión"); } }
+function salir(){ CLAVE=""; try{localStorage.removeItem("nomadas_clave");}catch(e){} vistos=null; pantallaLogin(); }
+
+function filtradas() { return datos.reservas.filter(r => sedeFiltro === "Todas las sedes" || r.sede === sedeFiltro); }
+
+function pintar() {
+  const hoy = hoyISO(), rs = filtradas();
+  const rHoy = rs.filter(r => r.fecha === hoy && r.estado !== "cancelada");
+  const pend = rs.filter(r => r.fecha >= hoy && r.estado === "pendiente").length;
+  const pHoy = datos.pedidos.filter(p => p.creada.slice(0,10) === hoy || (new Date(p.creada)).toDateString() === new Date().toDateString());
+  $("#stats").innerHTML = `
+    <div class="stat"><b>${rHoy.length}</b><span>Reservas hoy</span></div>
+    <div class="stat"><b>${rHoy.reduce((s,r)=>s+r.personas,0)}</b><span>Personas hoy</span></div>
+    <div class="stat"><b>${pend}</b><span>Por confirmar</span></div>
+    <div class="stat"><b>${pHoy.length}</b><span>Pedidos hoy</span></div>`;
+  const pPend = datos.pedidos.filter(p => p.estado === "pendiente").length;
+  const T = [["hoy","📅 Hoy"],["proximas","🗓️ Próximas", pend],["pedidos","🧺 Pedidos", pPend],["historial","📚 Historial"],["ajustes","⚙️ Ajustes"]];
+  $("#tabs").innerHTML = T.map(([k,l,n]) => `<button class="${tab===k?"on":""}" onclick="tab='${k}';pintar()">${l}${n?`<span class="n">${n}</span>`:""}</button>`).join("");
+  const c = $("#contenido");
+  const filtroSede = SEDES.length > 2 ? `<div class="filtro"><select onchange="sedeFiltro=this.value;pintar()">${SEDES.map(s=>`<option ${s===sedeFiltro?"selected":""}>${esc(s)}</option>`).join("")}</select></div>` : "";
+  if (tab === "hoy") {
+    const l = rs.filter(r => r.fecha === hoy);
+    c.innerHTML = filtroSede + (l.length ? `<div class="dia">Hoy, ${fechaBonita(hoy)}</div>` + l.map(tarjetaReserva).join("") : vacio("☕","No hay reservas para hoy todavía.","Cuando alguien reserve desde la página, aparece aquí al instante."));
+  } else if (tab === "proximas") {
+    const l = rs.filter(r => r.fecha > hoy && r.estado !== "cancelada");
+    c.innerHTML = filtroSede + (l.length ? agrupar(l) : vacio("🗓️","No hay reservas próximas.",""));
+  } else if (tab === "historial") {
+    const l = rs.filter(r => r.fecha < hoy || r.estado === "cancelada").reverse();
+    c.innerHTML = filtroSede + (l.length ? agrupar(l) : vacio("📚","Aún no hay historial.",""));
+  } else if (tab === "pedidos") {
+    c.innerHTML = datos.pedidos.length ? datos.pedidos.map(tarjetaPedido).join("") : vacio("🧺","Todavía no hay pedidos.","Los pedidos que los clientes envían por WhatsApp desde la página quedan registrados aquí.");
+  } else ajustes(c);
+}
+function vacio(i,t,s){ return `<div class="vacio"><div>${i}</div><b>${t}</b><p style="margin-top:6px;font-size:.88rem">${s}</p></div>`; }
+function agrupar(l){ let html="", ult=""; l.forEach(r => { if (r.fecha !== ult){ ult=r.fecha; const f=fechaBonita(r.fecha); html += `<div class="dia">${f[0].toUpperCase()+f.slice(1)}</div>`; } html += tarjetaReserva(r); }); return html; }
+const nombreEstado = { pendiente:"Por confirmar", confirmada:"Confirmada", cancelada:"Cancelada", llego:"Ya llegó", preparando:"Preparando", entregado:"Entregado" };
+
+function tarjetaReserva(r) {
+  const msgOk = `Hola ${r.nombre.split(" ")[0]} 👋 Te escribimos de *Nómadas del Café*. Tu reserva quedó *confirmada* ✅\n\n📅 ${fechaBonita(r.fecha)}\n🕐 ${hora12(r.hora)} ${ampm(r.hora)}\n👥 ${r.personas} persona${r.personas>1?"s":""}\n📍 ${r.sede}\n\n¡Te esperamos! ☕`;
+  return `<div class="item ${r.estado}">
+    <div class="fila"><div class="hora">${hora12(r.hora)}<small>${ampm(r.hora)}</small></div>
+    <div class="info"><b>${esc(r.nombre)}</b> <span class="badge ${r.estado}">${nombreEstado[r.estado]}</span>
+      <div class="m">👥 ${r.personas} persona${r.personas>1?"s":""} · 📍 ${esc(r.sede||"—")}${r.ocasion && r.ocasion!=="Comida normal"?` · 🎉 ${esc(r.ocasion)}`:""}<br>📱 ${esc(r.celular)} · <span style="opacity:.8">recibida ${hace(r.creada)}</span></div>
+      ${r.nota?`<div class="nota">📝 ${esc(r.nota)}</div>`:""}
+    </div></div>
+    <div class="acc">
+      ${r.estado!=="confirmada"&&r.estado!=="llego"?`<button class="btn ok" onclick="estado('${r.id}','confirmada')">✅ Confirmar</button>`:""}
+      <a class="btn wa" target="_blank" rel="noopener" href="https://api.whatsapp.com/send?phone=${waNum(r.celular)}&text=${encodeURIComponent(msgOk)}">💬 Avisar al cliente</a>
+      <a class="btn" href="tel:${esc(r.celular)}">📞 Llamar</a>
+      ${r.estado==="confirmada"?`<button class="btn" onclick="estado('${r.id}','llego')">🙋 Ya llegó</button>`:""}
+      ${r.estado!=="cancelada"?`<button class="btn" onclick="if(confirmarAccion(this))estado('${r.id}','cancelada')">✖ Cancelar</button>`:`<button class="btn" onclick="estado('${r.id}','pendiente')">↺ Reactivar</button>`}
+    </div></div>`;
+}
+function tarjetaPedido(p) {
+  return `<div class="item ${p.estado}">
+    <div class="fila"><div class="hora" style="font-size:1.25rem">${new Date(p.creada).toLocaleTimeString("es-CO",{hour:"numeric",minute:"2-digit"})}<small>${hace(p.creada)}</small></div>
+    <div class="info"><b>${esc(p.nombre||"Cliente")}</b> <span class="badge ${p.estado}">${nombreEstado[p.estado]||"Nuevo"}</span>
+      <div class="m">📍 ${esc(p.sede||"—")} · ${esc(p.tipo||"")}</div>
+      <div class="items">${p.items.map(i=>`• ${i.c} × ${esc(i.n)}`).join("<br>")}</div>
+      ${p.nota?`<div class="nota">📝 ${esc(p.nota)}</div>`:""}
+    </div></div>
+    <div class="acc">
+      ${p.estado==="pendiente"?`<button class="btn ok" onclick="estado('${p.id}','preparando')">👨‍🍳 Preparando</button>`:""}
+      ${p.estado!=="entregado"?`<button class="btn" onclick="estado('${p.id}','entregado')">✅ Entregado</button>`:""}
+    </div></div>`;
+}
+function confirmarAccion(b){ if (b.dataset.seguro) return true; b.dataset.seguro="1"; b.textContent="¿Seguro? Toca otra vez"; setTimeout(()=>{ b.dataset.seguro=""; b.textContent="✖ Cancelar"; },3000); return false; }
+async function estado(id, est) {
+  try {
+    await api("/estado", { method:"POST", body: JSON.stringify({ id, estado: est }) });
+    [...datos.reservas, ...datos.pedidos].forEach(x => { if (x.id === id) x.estado = est; });
+    pintar(); toast(nombreEstado[est] + " ✓");
+  } catch(e){ if (e.auth) return pantallaLogin("Tu sesión cerró. Entra otra vez."); toast("No se pudo guardar. Intenta de nuevo."); }
+}
+function ajustes(c) {
+  const n = datos.config.whatsapp || "";
+  c.innerHTML = `<div class="ajustes">
+    <div class="bloque"><label>📲 WhatsApp que recibe los avisos</label>
+      <p>Cuando un cliente reserva en la página, le llega un mensaje con los datos de la reserva a este número. También es el número de los pedidos.</p>
+      <input id="cfgWa" inputmode="tel" value="${esc(n.startsWith("57")&&n.length===12?n.slice(2):n)}" placeholder="Ej: 3142211270">
+      <button class="btn btn-oro" onclick="guardarWa()">Guardar número</button></div>
+    <div class="bloque"><label>📲 Instalar el panel en el celular</label>
+      <p>En Chrome toca los tres puntos ⋮ y luego <b>"Agregar a la pantalla de inicio"</b>. En iPhone toca Compartir y luego <b>"Agregar a inicio"</b>. Queda como una app con el logo del restaurante.</p></div>
+    <div class="bloque"><label>🔒 Seguridad</label>
+      <p>La clave del panel solo la tiene el restaurante. Si necesitas cambiarla, pídesela a tu desarrollador.</p>
+      <button class="btn" style="background:var(--card2);color:var(--ink);border:1px solid var(--linea);width:100%" onclick="salir()">Cerrar sesión en este celular</button></div>
+  </div>`;
+}
+async function guardarWa(){
+  try { await api("/config", { method:"POST", body: JSON.stringify({ whatsapp: $("#cfgWa").value }) }); await cargar(); toast("Número guardado ✓"); }
+  catch(e){ toast(e.message || "No se pudo guardar"); }
+}
+(async () => {
+  if (!CLAVE) return pantallaLogin();
+  try { await cargar(); pantallaApp(); } catch(e){ pantallaLogin(e.auth ? "" : "No se pudo conectar. Revisa tu internet."); }
+})();
+</script>
+</body>
+</html>
