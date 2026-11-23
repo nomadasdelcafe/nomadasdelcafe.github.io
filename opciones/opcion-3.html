@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nómadas del Café · Balcones de colores · Filandia</title>
+<link rel="icon" href="img/logo-180.png">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@600;800&family=Nunito+Sans:wght@400;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="shared/base.css">
+<style>
+:root{--bg:#fff8ec;--ink:#22160f;--ink2:#5b4636;--card:#fff;--acc:#e8466f;--acc2:#0f9d9a;--head:'Baloo 2',system-ui,sans-serif;--body:'Nunito Sans',system-ui,sans-serif;--r:22px;
+  --tq:#0f9d9a;--mg:#e8466f;--am:#f7b731;--vd:#2e8b57;--rj:#e1522c;--az:#2f63c0;--ph:#ffe7b8}
+.borde{border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.nav{position:sticky;top:0;z-index:50;background:var(--bg);border-bottom:3px solid var(--ink)}
+.nav .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;gap:10px}
+.nav .marca{display:flex;align-items:center;gap:10px;text-decoration:none;font-family:var(--head);font-weight:800;font-size:1.3rem}
+.nav .marca img{width:46px;height:46px;border-radius:50%;border:3px solid var(--ink)}
+.nav ul{display:flex;gap:6px;list-style:none}
+.nav ul a{text-decoration:none;font-weight:800;padding:7px 12px;border-radius:999px;font-size:.92rem}
+.nav ul li:nth-child(1) a:hover{background:var(--tq);color:#fff}.nav ul li:nth-child(2) a:hover{background:var(--mg);color:#fff}
+.nav ul li:nth-child(3) a:hover{background:var(--am)}.nav ul li:nth-child(4) a:hover{background:var(--vd);color:#fff}
+.carro{background:var(--am);border:3px solid var(--ink);box-shadow:3px 3px 0 var(--ink);border-radius:999px;padding:8px 14px;font-weight:800;font-family:var(--body);cursor:pointer;display:flex;gap:6px;align-items:center;white-space:nowrap}
+@media(max-width:900px){.nav ul{display:none}.nav .marca span{font-size:1.05rem}}
+
+.hero{display:grid;grid-template-columns:1.05fr 1fr;min-height:84vh;border-bottom:3px solid var(--ink)}
+.hero .izq{background:var(--tq);color:#fff;padding:60px 48px;display:flex;flex-direction:column;justify-content:center;position:relative;overflow:hidden}
+.hero .izq::after{content:"";position:absolute;right:-60px;bottom:-60px;width:240px;height:240px;border-radius:50%;background:var(--am);opacity:.9}
+.hero .pill{align-self:flex-start;background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:5px 14px;font-weight:800;font-size:.85rem;margin-bottom:18px}
+.hero h1{font-size:clamp(3rem,7.5vw,5.6rem);line-height:.95;font-weight:800;margin-bottom:16px;position:relative;z-index:2}
+.hero h1 span{color:var(--am);-webkit-text-stroke:2px var(--ink)}
+.hero p{font-size:1.15rem;max-width:520px;margin-bottom:26px;position:relative;z-index:2}
+.hero .btns{display:flex;gap:12px;flex-wrap:wrap;position:relative;z-index:2}
+.hero .btn{border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+.btn-am{background:var(--am);color:var(--ink)}
+.hero .der{position:relative;background:var(--mg);display:grid;place-items:center;padding:30px;overflow:hidden}
+.hero .der .banner{width:92%;border-radius:18px;transform:rotate(-2deg);position:relative;z-index:2}
+.hero .der .f1{position:absolute;width:34%;left:5%;bottom:4%;z-index:1;border-radius:18px;transform:rotate(-6deg);aspect-ratio:1;object-fit:cover}
+.hero .der .f2{position:absolute;width:30%;right:5%;top:4%;z-index:1;border:3px solid var(--ink);border-radius:18px;transform:rotate(5deg);aspect-ratio:1;object-fit:cover}
+@media(max-width:860px){.hero{grid-template-columns:1fr}.hero .izq{padding:44px 24px}.hero .der{min-height:420px}}
+
+.cinta{background:var(--ink);color:var(--am);overflow:hidden;white-space:nowrap;font-family:var(--head);font-weight:800;font-size:1.2rem;padding:10px 0}
+.cinta div{display:inline-block;animation:corre 28s linear infinite}
+@keyframes corre{to{transform:translateX(-50%)}}
+
+section{padding:80px 0}
+.tit{text-align:center;margin-bottom:38px}
+.tit .k{display:inline-block;background:var(--am);border:3px solid var(--ink);border-radius:999px;padding:3px 14px;font-weight:800;font-size:.85rem}
+.tit h2{font-size:clamp(2.2rem,5.5vw,3.6rem);font-weight:800;line-height:1;margin-top:12px}
+.tit p{color:var(--ink2);max-width:620px;margin:12px auto 0}
+
+.puertas{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.puerta{border-radius:120px 120px 18px 18px;padding:34px 18px 22px;text-align:center;color:#fff}
+.puerta .ic{font-size:2.4rem}.puerta b{display:block;font-family:var(--head);font-size:1.35rem;margin-top:6px}
+.puerta:nth-child(1){background:var(--tq)}.puerta:nth-child(2){background:var(--mg)}.puerta:nth-child(3){background:var(--am);color:var(--ink)}.puerta:nth-child(4){background:var(--az)}
+@media(max-width:760px){.puertas{grid-template-columns:1fr 1fr}}
+.premios-fila{display:flex;gap:20px;justify-content:center;align-items:center;flex-wrap:wrap;margin-top:40px}
+.premios-fila img{height:170px;width:auto;border-radius:16px;background:#fff;padding:8px}
+.premios-fila p{max-width:360px;font-weight:700}
+
+.celebra{background:var(--mg);color:#fff;border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.celebra .grid{display:grid;grid-template-columns:1fr 1fr;gap:44px;align-items:center}
+.celebra img{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:26px;transform:rotate(-2deg)}
+.celebra h2{font-size:clamp(2.3rem,5vw,3.6rem);line-height:1;font-weight:800;margin:12px 0 14px}
+.celebra p{font-size:1.08rem;margin-bottom:16px}
+.celebra .chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:22px}
+.celebra .chips span{background:#fff;color:var(--ink);border:3px solid var(--ink);border-radius:999px;padding:6px 14px;font-weight:800;font-size:.9rem}
+.celebra .btn{border:3px solid var(--ink);box-shadow:4px 4px 0 var(--ink)}
+@media(max-width:760px){.celebra .grid{grid-template-columns:1fr}}
+
+.menu .prod{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink)}
+.menu .prod:nth-child(6n+1) .foto{--ph:#bdeeed}.menu .prod:nth-child(6n+2) .foto{--ph:#ffd2de}.menu .prod:nth-child(6n+3) .foto{--ph:#ffe7b8}
+.menu .prod:nth-child(6n+4) .foto{--ph:#cfe9d9}.menu .prod:nth-child(6n+5) .foto{--ph:#ffd6c9}.menu .prod:nth-child(6n) .foto{--ph:#d3defa}
+.menu .prod .foto{border-bottom:3px solid var(--ink)}
+.filtro{border-width:3px}
+.agregar{border:2px solid var(--ink)}
+.aviso-banda{border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);border-style:solid}
+
+.promo{background:var(--am);border-top:3px solid var(--ink);border-bottom:3px solid var(--ink)}
+.promo .grid{display:grid;grid-template-columns:repeat(2,1fr);gap:26px}
+.promo .caja{border-radius:26px;padding:34px;display:flex;flex-direction:column;gap:12px}
+.promo .c1{background:#fff}.promo .c2{background:var(--ink);color:#fff}
+.promo .cuadro{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center}
+.promo .cuadro img{width:150px;height:150px;object-fit:cover;border-radius:20px;border:3px solid var(--ink)}
+.promo .big{font-family:var(--head);font-size:5rem;line-height:.9;font-weight:800;color:var(--mg)}
+.promo h3{font-size:2rem;line-height:1.05}
+.promo .btn{align-self:flex-start;border:3px solid var(--ink)}
+@media(max-width:760px){.promo .grid{grid-template-columns:1fr}.promo .cuadro{grid-template-columns:110px 1fr}.promo .cuadro img{width:110px;height:110px}}
+
+.reels .marco{border-width:4px}
+.galeria-grid img{border:3px solid var(--ink)}
+.carrusel figure{border:3px solid var(--ink)}
+.carrusel figure:nth-child(4n+1) figcaption{background:var(--tq);color:#fff}.carrusel figure:nth-child(4n+2) figcaption{background:var(--mg);color:#fff}
+.carrusel figure:nth-child(4n+3) figcaption{background:var(--am)}.carrusel figure:nth-child(4n) figcaption{background:var(--vd);color:#fff}
+.carrusel figcaption{border-top:3px solid var(--ink)}
+.ops{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.op{background:#fff;border-radius:22px;padding:22px}
+.op .e{color:var(--am);font-size:1.2rem;-webkit-text-stroke:1px var(--ink)}
+.op p{font-family:var(--head);font-size:1.25rem;line-height:1.25;margin:8px 0}
+.op span{font-weight:800;color:var(--ink2);font-size:.85rem}
+@media(max-width:760px){.ops{grid-template-columns:1fr}}
+.sedes-sec{background:var(--tq)}
+.sedes-sec .tit h2{color:#fff}
+.sede{border:3px solid var(--ink);box-shadow:6px 6px 0 var(--ink)}
+.sede-mapa{border:3px solid var(--ink)}
+.jue{display:block;margin:26px auto 0;text-align:center;background:var(--rj);color:#fff;border:3px solid var(--ink);border-radius:999px;padding:10px 20px;font-weight:800;max-width:520px}
+footer{background:var(--ink);color:#fff;text-align:center;padding:40px 20px 120px}
+footer b{font-family:var(--head);font-size:1.8rem;color:var(--am)}
+footer p{opacity:.8;font-size:.9rem;margin-top:6px}
+.bot-flot{border:3px solid #fff}
+</style>
+</head>
+<body>
+<header class="nav"><div class="wrap">
+  <a class="marca" href="#inicio"><img src="img/logo-180.png" alt=""><span>Nómadas del Café</span></a>
+  <ul><li><a href="#casa">La casa</a></li><li><a href="#celebra">Celebra</a></li><li><a href="#menu">Menú</a></li><li><a href="#sedes-sec">Sedes</a></li></ul>
+  <button class="carro" onclick="abrirPanel()">🧺 Pedido <span class="numCarrito">0</span></button>
+</div></header>
+
+<section class="hero" id="inicio" style="padding:0">
+  <div class="izq">
+    <span class="pill">🏆 El mejor café en Filandia · Restaurant Guru 2026</span>
+    <h1>Sabor que<br>viaja, casa que <span>abraza</span></h1>
+    <p>Cocina típica del Quindío, café de origen y cócteles, en una casa de balcones de colores a dos cuadras del parque principal de Filandia, Quindío.</p>
+    <div class="btns"><a href="#menu" class="btn btn-am">🍽️ Ver menú</a><a class="btn btn-wa" data-wa="Hola Nómadas del Café 👋 Quiero información." data-wa-icon>WhatsApp</a></div>
+  </div>
+  <div class="der">
+    <img class="f2" src="img/f061.jpg" alt="Cazuela de la casa">
+    <img class="banner borde" src="img/hero-banner.jpg" alt="Nómadas del Café · Alta cocina colombiana">
+    <img class="f1 borde" src="img/f050.jpg" alt="Cócteles de la casa">
+  </div>
+</section>
+<div class="cinta"><div>☕ Café de origen ✦ 🍲 Cocina típica ✦ 🍹 Cócteles 2x1 ✦ 🎂 Celebraciones ✦ 📍 2 sedes en Filandia ✦ 🚫 Jueves cerrado ✦ ☕ Café de origen ✦ 🍲 Cocina típica ✦ 🍹 Cócteles 2x1 ✦ 🎂 Celebraciones ✦ 📍 2 sedes en Filandia ✦ 🚫 Jueves cerrado ✦&nbsp;</div></div>
+
+<section id="casa">
+  <div class="wrap">
+    <div class="tit"><span class="k">Nuestra casa</span><h2>El sabor del Paisaje Cultural Cafetero</h2><p>Barandas de colores, mesas de madera y la calidez quindiana. Aquí viajeros y vecinos se sienten en casa.</p></div>
+    <div class="puertas">
+      <div class="puerta borde"><div class="ic">☕</div><b>Café de origen</b>Granos del Quindío</div>
+      <div class="puerta borde"><div class="ic">🍲</div><b>Cocina típica</b>Recetas de la abuela</div>
+      <div class="puerta borde"><div class="ic">🍹</div><b>Cócteles 2x1</b>Para compartir</div>
+      <div class="puerta borde"><div class="ic">🏡</div><b>2 sedes</b>En Filandia</div>
+    </div>
+    <div class="premios-fila"><img class="borde" src="img/f006.jpg" alt="El mejor restaurante 2026"><img class="borde" src="img/f007.jpg" alt="El mejor café en Filandia 2026"><p>Dos reconocimientos de Restaurant Guru en 2026. ¡Gracias a cada viajero y a cada vecino que nos eligió!</p></div>
+  </div>
+</section>
+
+<section class="celebra" id="celebra">
+  <div class="wrap grid">
+    <img class="borde" src="img/foto-celebraciones.jpg" alt="Celebración en Nómadas del Café">
+    <div>
+      <span class="tit" style="text-align:left"><span class="k" style="color:var(--ink)">🎉 Celebra con nosotros</span></span>
+      <h2>¡Tu fiesta, nuestra casa!</h2>
+      <p>Cumpleaños, aniversario o reunión: tú traes a tu gente y nosotros ponemos la magia. Decoramos tu mesa a tu gusto y preparamos todo para que sea un momento inolvidable.</p>
+      <div class="chips"><span>🎈 Decoración a tu gusto</span><span>🎂 Torta y velitas</span><span>🍷 Mesa para tu grupo</span><span>📅 Reserva anticipada</span></div>
+      <a class="btn btn-am" data-wa="Hola Nómadas del Café 👋 Quiero reservar y decorar una mesa para una celebración. Fecha: ___ · Personas: ___ · Sede: ___" data-wa-icon>¡Quiero celebrar aquí!</a>
+    </div>
+  </div>
+</section>
+
+<section class="menu" id="menu">
+  <div class="wrap">
+    <div class="tit"><span class="k">Arma tu pedido</span><h2>¿Qué se te antoja hoy?</h2></div>
+    <div class="aviso-banda"><span class="ic">📞</span><div class="aviso-texto"></div></div>
+    <div class="filtros" id="filtros"></div>
+    <div class="productos" id="productos"></div>
+  </div>
+</section>
+
+<section class="promo" id="promo">
+  <div class="wrap grid">
+    <div class="caja c1 borde"><div class="cuadro"><img src="img/f016.jpg" alt="Cóctel de la casa"><div><div class="big">2x1</div><h3>en cócteles</h3></div></div>
+      <p>Mojitos, margaritas, piña colada y los de la casa. ¡Uno para ti y otro para tu parcero!</p>
+      <button class="btn btn-am" onclick="filtrar('Cócteles');document.getElementById('menu').scrollIntoView()">🍹 Ver cócteles</button></div>
+    <div class="caja c2 borde"><div class="cuadro"><img src="img/f015.jpg" alt="Cena de fin de año" style="object-position:top"><div><h3>Cena de fin de año en 4 tiempos</h3></div></div>
+      <p>Despide el año con alta cocina colombiana. Cupos limitados.</p>
+      <a class="btn btn-am" data-wa="Hola Nómadas del Café 👋 Quiero información y reservar para la Cena de fin de año en 4 tiempos.">🥂 Reservar mi cena</a></div>
+  </div>
+</section>
+
+<section id="video">
+  <div class="wrap"><div class="tit"><span class="k">Así se vive</span><h2>Mesas llenas, corazones felices</h2></div>
+    <div class="reels" id="reels"></div></div>
+</section>
+
+<section style="padding-top:10px">
+  <div class="wrap"><div class="tit"><span class="k">Galería</span><h2>Momentos Nómadas</h2></div>
+    <div class="galeria-grid" id="galeria"></div></div>
+</section>
+
+<section style="background:#fff1d6;border-top:3px solid var(--ink)">
+  <div class="wrap"><div class="tit"><span class="k">Rincones</span><h2>Cada esquina tiene su historia</h2></div>
+    <div class="carrusel" id="rincones"></div>
+    <div class="tit" style="margin-top:60px"><span class="k">⭐ 5.0 en Tripadvisor</span><h2>Lo que dicen de nosotros</h2></div>
+    <div class="ops">
+      <div class="op borde"><div class="e">★★★★★</div><p>“…los tacos de birria más ricos que he comido en mi vida”</p><span>Ana E.</span></div>
+      <div class="op borde"><div class="e">★★★★★</div><p>“Me encantó la sobrebarriga en salsa criolla”</p><span>Christian A.</span></div>
+      <div class="op borde"><div class="e">★★★★★</div><p>“…un ambiente muy familiar y tranquilo para comer y platicar.”</p><span>Lorena H.</span></div>
+    </div>
+    <div class="tit" style="margin-top:60px"><span class="k">Nuestra gente</span><h2>Visitantes felices</h2></div>
+    <div class="carrusel" id="clientes"></div></div>
+</section>
+
+<section class="sedes-sec" id="sedes-sec" style="border-top:3px solid var(--ink)">
+  <div class="wrap"><div class="tit"><span class="k">Visítanos</span><h2>2 sedes en Filandia</h2></div>
+    <div class="sedes" id="sedes"></div>
+    <span class="jue">🚫 Los jueves descansamos: ambas sedes cerradas</span></div>
+</section>
+
+<footer><b>Nómadas del Café</b>
+  <p>Cra. 8 # 6-52, Calle del Tiempo Detenido · Cra. 6 # 6-18, C. C. Giraldo Plaza, local 8</p>
+  <p>Filandia, Quindío · WhatsApp y llamadas 314 221 1270 · © 2026</p></footer>
+<script src="shared/app.js"></script>
+<script src="shared/reservas.js"></script>
+<meta name="robots" content="noindex">
+</body>
+</html>
