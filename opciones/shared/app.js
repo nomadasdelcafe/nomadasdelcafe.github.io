@@ -46,7 +46,7 @@ const CERRADO = "Jueves cerrado por descanso (ambas sedes)";
    Sin foto todavía → usa "ic" (emoji). Cuando llegue la foto, cambia ic por img:I(número) o img:"img/nombre.jpg" */
 const productos = [
   {id:200, cat:"☀️ Platos fuertes", n:"Sobrebarriga Criolla", d:"Sobrebarriga pitada con cerveza, Coca-Cola, pimentón, cebolla, tomate y puerro; arroz, tajada de plátano, ensalada y aguacate.", ic:"🥩", tag:"Favorita"},
-  {id:201, cat:"☀️ Platos fuertes", n:"Costilla Montañera", d:"Costilla de cerdo horneada con vino tinto y cerveza, romero y hogao; arroz, tajada, ensalada y aguacate.", img:I(91)},
+  {id:201, cat:"☀️ Platos fuertes", n:"Costilla Montañera", d:"Costilla de cerdo horneada con vino tinto y cerveza, romero y hogao; arroz, tajada, ensalada y aguacate.", ic:"🍖"},
   {id:202, cat:"☀️ Platos fuertes", n:"Sopa Especial del Día", d:"Sancocho, ajiaco o mondongo con arroz, ensalada, banano y aguacate.", img:I(93)},
   {id:203, cat:"☀️ Platos fuertes", n:"Cazuela de Fríjoles", d:"Fríjoles con plátano en cuadritos y chicharrón; con arroz, aguacate, tajada y ensalada.", img:I(47)},
   {id:204, cat:"☀️ Platos fuertes", n:"Bandeja Paisa de la Casa", d:"Nuestra receta mejorada: fríjoles, arroz, carne desmechada, chicharrón, tajada, chorizo, aguacate, arepa y huevo.", ic:"🍛", tag:"🏆 Reconocida en la región"},
